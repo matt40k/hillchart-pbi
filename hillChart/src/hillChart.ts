@@ -57,3 +57,18 @@ export class Visual implements IVisual {
         return VisualSettings.enumerateObjectInstances(this.settings || VisualSettings.getDefault(), options);
     }
 }
+
+/**
+ * Simple function to convert the input value into a clean 0-100 value
+ * @param value
+ */
+function convertValue(value: string): number {
+    let item = parseFloat(value);
+    if (item > 100)
+        return 100;
+    if (item == 0)
+        return 0;
+    if (item < 1)
+        return item * 100;
+    return item;
+}
