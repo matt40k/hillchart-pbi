@@ -2,17 +2,17 @@
     "visual": {
         "name": "hillChart",
         "displayName": "HillChart",
-        "guid": "hillChart64B7114A501F4E83ACE52157826FDDD0",
+        "guid": "1f99e41e-28b9-4430-8c43-434e638d513d",
         "visualClassName": "Visual",
         "version": "1.0.0",
-        "description": "",
-        "supportUrl": "",
-        "gitHubUrl": ""
+        "description": "Hill Chart",
+        "supportUrl": "https://github.com/matt40k/hillchart-pbi",
+        "gitHubUrl": "https://github.com/matt40k/hillchart-pbi"
     },
     "apiVersion": "2.6.0",
     "author": {
-        "name": "",
-        "email": ""
+        "name": "Matt Smith",
+        "email": "matt@matt40k.uk"
     },
     "assets": {
         "icon": "assets/icon.png"
