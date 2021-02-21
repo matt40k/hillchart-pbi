@@ -1,22 +1,22 @@
 {
     "dataRoles": [
         {
-            "displayName": "Category Data",
-            "name": "category",
-            "kind": "Grouping"
+            "displayName": "Progress",
+            "name": "progress",
+            "kind": "Measure"
         },
         {
-            "displayName": "Measure Data",
-            "name": "measure",
-            "kind": "Measure"
+            "displayName": "Project",
+            "name": "project",
+            "kind": "Grouping"
         }
     ],
     "objects": {
-        "dataPoint": {
-            "displayName": "Data colors",
+        "dataPointSettings": {
+            "displayName": "Data Point",
             "properties": {
-                "defaultColor": {
-                    "displayName": "Default color",
+                "defaultColour": {
+                    "displayName": "Default colour",
                     "type": {
                         "fill": {
                             "solid": {
@@ -31,8 +31,21 @@
                         "bool": true
                     }
                 },
-                "fill": {
-                    "displayName": "Fill",
+                "defaultSize": {
+                    "displayName": "Default size",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                }
+            }
+        },
+        "hillSettings": {
+            "displayName": "Hill",
+            "properties": {
+                "hillColor": {
+                    "displayName": "Hill color",
                     "type": {
                         "fill": {
                             "solid": {
@@ -41,18 +54,24 @@
                         }
                     }
                 },
-                "fillRule": {
-                    "displayName": "Color saturation",
-                    "type": {
-                        "fill": {}
-                    }
-                },
-                 "fontSize": {
+                "fontSize": {
                     "displayName": "Text Size",
                     "type": {
                         "formatting": {
                             "fontSize": true
                         }
+                    }
+                },
+                "axisLabelUpper": {
+                    "displayName": "Axis label uppercase",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "enableMiddleLine": {
+                    "displayName": "Middle line",
+                    "type": {
+                        "bool": true
                     }
                 }
             }
@@ -60,23 +79,24 @@
     },
     "dataViewMappings": [
         {
-            "categorical": {
-                "categories": {
+            "conditions": [
+                {
+                    "progress": {
+                        "min": 1,
+                        "max": 1
+                    }
+                }
+            ],
+            "table": {
+                "rows": {
                     "for": {
-                        "in": "category"
+                        "in": "values"
                     },
                     "dataReductionAlgorithm": {
-                        "top": {}
-                    }
-                },
-                "values": {
-                    "select": [
-                        {
-                            "bind": {
-                                "to": "measure"
-                            }
+                        "top": {
+                            "count": 100
                         }
-                    ]
+                    }
                 }
             }
         }
