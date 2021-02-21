@@ -2,3 +2,4 @@ node_modules/
 .tmp/
 dest/
 .vscode/
+webpack.statistics.dev.html
