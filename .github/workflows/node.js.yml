@@ -25,9 +25,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
+    - run: npm install
       working-directory: hillChart
-    - run: npm run build --if-present
+    - run: npm audit
       working-directory: hillChart
-    - run: npm test
+    - run: pbiviz package
       working-directory: hillChart
