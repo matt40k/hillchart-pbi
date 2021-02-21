@@ -4,3 +4,4 @@ dest/
 .vscode/
 webpack.statistics.dev.html
 **/webpack.statistics.dev.html
+tmp/
