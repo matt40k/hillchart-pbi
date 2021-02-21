@@ -13,6 +13,8 @@ import DataView = powerbi.DataView;
 import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnumerationObject;
 
 import { VisualSettings } from "./settings";
+import { HillChartViewModel, DataPoint, DataPointSettings, HillSettings, HillChartSettings } from "./dataInterfaces";
+
 export class Visual implements IVisual {
     private target: HTMLElement;
     private updateCount: number;
