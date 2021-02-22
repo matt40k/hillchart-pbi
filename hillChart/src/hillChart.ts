@@ -72,3 +72,11 @@ function convertValue(value: string): number {
         return item * 100;
     return item;
 }
+
+/**
+ * Converts the x (progress) position to the y (height)
+ * @param x progress
+ */
+function translateXtoY(x: number): number {
+    return (50 * Math.sin((Math.PI / 50) * x - (1 / 2) * Math.PI) + 50);
+}
