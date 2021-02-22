@@ -24,6 +24,7 @@ export class HillChart implements IVisual {
 
     private host: IVisualHost;
     private selectionManager: ISelectionManager;
+    private element: HTMLElement;
 
     private svg: d3.Selection<d3.BaseType, any, HTMLElement, any>;
     private locale: string;
@@ -38,11 +39,17 @@ export class HillChart implements IVisual {
         console.log('Visual constructor', options);
 
         this.host = options.host;
+        this.element = options.element;
+        this.selectionManager = options.host.createSelectionManager();
         this.locale = options.host.locale;
 
         this.svg = d3.select(options.element)
             .append('svg')
             .classed('HillChart', true);
+
+        this.selectionManager.registerOnSelectCallback(() => {
+            this.syncSelectionState(<ISelectionId[]>this.selectionManager.getSelectionIds());
+        });
     }
 
     public update(options: VisualUpdateOptions) {
@@ -180,6 +187,13 @@ export class HillChart implements IVisual {
     public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
         return VisualSettings.enumerateObjectInstances(this.settings || VisualSettings.getDefault(), options);
     }
+
+    private syncSelectionState(
+        //selection: Selection<DataPoint>,
+        selectionIds: ISelectionId[]
+    ): void {
+
+    }
 }
 
 /**
@@ -264,23 +278,31 @@ function visualTransform(options: VisualUpdateOptions, host: IVisualHost, settin
         }
     );
 
-    //const selectionId: ISelectionId = host.createSelectionIdBuilder()
-    //.withCategory(category, i)
-    //.createSelectionId();
-
+    var rowCnt = 1;
     tbl.rows.forEach(
         (row) => {
+            
+            console.log("Row count: ", rowCnt)
+
             let progressValue: number = convertValue(row[columnProgress].toString());
             let projectValue: string = row[columnProject].toString();
-            //let selId = this.host.createSelectionIdBuilder().withTable(dataViews[0].table, 1).createSelectionId();
+            const selId = this.host.createSelectionIdBuilder()
+                            .withTable(tbl, rowCnt)
+                            .createSelectionId();
+
+            console.log("Test");
 
             viewModel.dataPoints.push(
                 {
                     progress: progressValue,
-                    project: projectValue
-                    //selectionId: selId
+                    project: projectValue,
+                    selectionId: selId
                 }
             );
+
+            rowCnt += 1;
+
+            
         }
     );
     //viewModel.settings

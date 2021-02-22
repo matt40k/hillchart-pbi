@@ -34,3 +34,8 @@ export interface HillChartSettings {
     hill: HillSettings;
     dataPoint: DataPointSettings;
 }
+
+export interface ISelectionIdBuilder {
+    withTable(table: DataViewTable, rowIndex: number): this;
+    createSelectionId(): ISelectionId;
+}
