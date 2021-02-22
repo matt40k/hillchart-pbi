@@ -3,7 +3,7 @@
         "name": "hillChart",
         "displayName": "HillChart",
         "guid": "af99e41e28b944308c43434e638d513d",
-        "visualClassName": "Visual",
+        "visualClassName": "HillChart",
         "version": "1.0.0",
         "description": "Hill Chart",
         "supportUrl": "https://github.com/matt40k/hillchart-pbi",
